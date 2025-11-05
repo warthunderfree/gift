@@ -1,0 +1,312 @@
+/* War Thunder - style layout with tank area and form */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+
+:root {
+  --red: #d7191c;
+  --dark: #0a0c0f;
+  --metal: #1a1d22;
+  --light: #e6e6e6;
+  --accent: #ff2c2c;
+  --muted: #9fa3a7;
+}
+
+* { box-sizing: border-box; }
+
+html,body{ height:100%; margin:0; font-family:'Rajdhani', sans-serif; color:var(--light); }
+
+body {
+  background: radial-gradient(ellipse at top left, rgba(255,255,255,0.03), transparent 10%),
+              url('https://cdn.warthunder.com/upload/image/2022/06/metal_texture_bg.jpg') no-repeat center/cover;
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+}
+
+.overlay {
+  position:fixed; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(2,2,5,0.75));
+  z-index:0;
+}
+
+/* Card container */
+.card {
+  position:relative;
+  z-index:1;
+  max-width:1100px;
+  margin:6vh auto;
+  padding:0;
+  background: linear-gradient(90deg, rgba(12,14,18,0.95), rgba(8,9,11,0.95));
+  border-radius:12px;
+  border-top:4px solid var(--red);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 30px rgba(215,25,28,0.08);
+}
+
+/* Hero split: left = tank, right = form */
+.hero {
+  display:flex;
+  gap:0;
+  align-items:stretch;
+}
+
+/* Tank area */
+.tank-wrap{
+  width:48%;
+  min-height:420px;
+  background: linear-gradient(180deg, rgba(16,18,20,0.95), rgba(6,8,10,0.95));
+  border-right:1px solid rgba(255,255,255,0.03);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:24px;
+  overflow:hidden;
+  border-bottom-left-radius:12px;
+  border-top-left-radius:12px;
+}
+
+.tank-img{
+  max-width:120%;
+  opacity:0.92;
+  transform: translateY(6px);
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.7)) saturate(1.05);
+}
+
+/* Tank badge */
+.tank-badge{
+  position:absolute;
+  left:18px;
+  top:18px;
+  background:rgba(10,10,10,0.6);
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--light);
+  padding:6px 10px;
+  font-weight:700;
+  letter-spacing:1px;
+  border-radius:6px;
+  box-shadow: 0 4px 14px rgba(215,25,28,0.12);
+}
+
+/* Content/Form area */
+.content{
+  width:52%;
+  padding:32px 36px;
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.title {
+  font-size:1.6rem;
+  margin:0 0 6px 0;
+  text-transform:uppercase;
+  color:#fff;
+}
+
+.subtitle{
+  color:var(--muted);
+  margin:0 0 18px 0;
+  font-size:0.95rem;
+  line-height:1.45;
+}
+
+/* Form layout */
+.form label{ display:block; margin-bottom:12px; color:#d6d6d6; font-size:0.95rem; }
+.form span{ display:block; margin-bottom:6px; font-size:0.85rem; color:var(--muted); }
+
+input[type="text"], input[type="email"]{
+  width:100%;
+  padding:10px 12px;
+  border-radius:6px;
+  border:1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+  color:var(--light);
+  font-size:0.95rem;
+  transition:box-shadow .15s, border-color .15s;
+}
+
+input:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow: 0 0 10px rgba(255,44,44,0.12);
+}
+
+/* Payment fieldset */
+.card-fieldset{
+  margin-top:8px;
+  padding:12px 14px;
+  border-radius:8px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border:1px solid rgba(255,255,255,0.03);
+  color:var(--muted);
+}
+
+.card-fieldset legend{
+  padding:0 6px;
+  font-weight:700;
+  color:var(--light);
+  font-size:0.9rem;
+}
+
+.card-row{
+  display:flex;
+  gap:10px;
+  margin-top:8px;
+}
+
+label.small{ flex:1; }
+
+.small-note{
+  margin-top:10px;
+  font-size:0.8rem;
+  color:#c8c8c8;
+  background: rgba(0,0,0,0.04);
+  padding:8px;
+  border-radius:6px;
+}
+
+/* Submit button */
+button#payBtn{
+  width:100%;
+  margin-top:14px;
+  padding:12px;
+  font-size:1rem;
+  font-weight:800;
+  border-radius:8px;
+  border:none;
+  color:#fff;
+  background: linear-gradient(90deg,#b40f0f,#ff2c2c);
+  cursor:pointer;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  box-shadow: 0 8px 30px rgba(180,15,15,0.18);
+}
+
+button#payBtn:hover{ transform:translateY(-2px); }
+
+/* Message & legal */
+.message{ margin-top:10px; color:#e7e7e7; font-size:0.9rem; }
+.legal{ margin-top:16px; color:var(--muted); font-size:0.8rem; }
+
+/* Footer */
+footer{ text-align:center; padding:14px 0; color:#9fa3a7; font-size:0.85rem; }
+
+/* Responsive adjustments */
+@media (max-width:900px){
+  .hero{ flex-direction:column-reverse; }
+  .tank-wrap{ width:100%; min-height:240px; border-radius:0 0 12px 12px; border-right:none; }
+  .content{ width:100%; padding:22px; }
+  .tank-img{ max-width:160%; opacity:0.9; transform:none; }
+}
+
+.success-screen {
+  text-align: center;
+  color: #eee;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.success-screen h2 {
+  font-size: 2rem;
+  color: #ffcc33;
+  margin-bottom: 0.5em;
+}
+
+.success-screen p {
+  font-size: 1.1rem;
+  margin: 0.3em 0;
+}
+
+.reward-img {
+  width: 300px;
+  max-width: 90%;
+  margin-top: 1em;
+  border: 3px solid #666;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 200, 0, 0.6);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.claim-btn {
+  background: linear-gradient(90deg, #d6b211, #f5d547);
+  border: none;
+  color: #111;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1em;
+  font-family: 'Rajdhani', sans-serif;
+  transition: 0.3s;
+}
+
+.claim-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #ffdf4d, #ffe97a);
+}
+
+/* Повноекранна картинка танка */
+.tank-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 5, 5, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Картинка танка — трохи менша та по центру */
+.fullscreen-tank {
+  width: 60%;
+  max-width: 700px;
+  height: auto;
+  border: 3px solid #777;
+  border-radius: 12px;
+  box-shadow: 0 0 35px rgba(255, 200, 0, 0.4);
+  animation: zoomIn 0.6s ease-in-out;
+}
+
+/* Кнопка закриття */
+.close-btn {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  background: #ff4444;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.close-btn:hover {
+  background: #ff6666;
+}
+
+/* Анімації */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
